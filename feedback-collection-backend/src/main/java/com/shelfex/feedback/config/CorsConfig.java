@@ -13,7 +13,7 @@ public class CorsConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**") // Apply to all /api endpoints
                 .allowedOrigins(
                         "http://localhost:3000", // For local development testing
-                        "https://YOUR-VERCEL-FRONTEND-URL.vercel.app" // <-- IMPORTANT: PLACEHOLDER FOR NOW! You'll update this later.
+                        "https://shelfex-project-feedback-collector.vercel.app" // <-- IMPORTANT: PLACEHOLDER FOR NOW! You'll update this later.
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
                 .allowedHeaders("*")
