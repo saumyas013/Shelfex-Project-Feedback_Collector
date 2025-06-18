@@ -1,6 +1,6 @@
 # Stage 1: Build the Spring Boot application using Maven
 # Use a Maven image with JDK 17 as the build environment
-FROM maven:3-openjdk-21 AS build
+FROM maven:3-openjdk-17 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -17,7 +17,7 @@ RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final lightweight image
 # Use a smaller JRE-only image for the final application, based on OpenJDK 17
-FROM openjdk:21-jre-slim-bullseye
+FROM openjdk:17-jre-slim-bullseye
 
 # Set the working directory for the application inside the container
 WORKDIR /app
