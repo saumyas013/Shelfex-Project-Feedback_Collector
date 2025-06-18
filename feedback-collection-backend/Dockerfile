@@ -17,7 +17,7 @@ RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final lightweight image
 # Use a smaller JRE-only image for the final application, based on OpenJDK 17
-FROM openjdk:17-jre-slim-bullseye
+FROM openjdk:17-jre-slim
 
 # Set the working directory for the application inside the container
 WORKDIR /app
@@ -26,7 +26,7 @@ WORKDIR /app
 # Replace 'feedback-backend-0.0.1-SNAPSHOT.jar' with the actual name of your generated JAR file.
 # You can find the exact name in your local 'feedback-collection-backend/target/' directory after running 'mvn clean package'.
 # It usually follows the pattern: <artifactId>-<version>.jar
-COPY --from=build /app/target/feedback-collection-backend-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/feedback-collection-backend-1.0.0.jar app.jar
 
 # Expose the port your Spring Boot application runs on (as defined in application.properties/yml)
 EXPOSE 8080
