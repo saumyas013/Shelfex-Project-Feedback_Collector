@@ -1,0 +1,15 @@
+/* src/components/CustomStarRating.css */
+.custom-star-rating-container {
+  display: inline-flex; /* Use flexbox to align stars horizontally */
+  align-items: center; /* Center them vertically */
+  line-height: 1; /* Essential to prevent extra spacing for unicode stars */
+}
+
+.custom-star {
+  /* This is already handled by inline styles in JS, but you could add hover effects here */
+  transition: transform 0.1s ease-in-out;
+}
+
+.custom-star:hover {
+  transform: scale(1.1);
+}
