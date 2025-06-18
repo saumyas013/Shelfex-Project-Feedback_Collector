@@ -17,7 +17,7 @@ RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final lightweight image
 # Use a smaller JRE-only image for the final application, based on OpenJDK 17
-FROM openjdk:21-jre-slim
+FROM openjdk:21-jre-slim-bullseye
 
 # Set the working directory for the application inside the container
 WORKDIR /app
