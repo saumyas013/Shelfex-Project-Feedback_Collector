@@ -1,6 +1,6 @@
 # Stage 1: Build the Spring Boot application using Maven
 # Use a Maven image with JDK 17 as the build environment
-FROM maven:3.8.8-openjdk-21 AS build
+FROM maven:3.9.6-openjdk-21 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
