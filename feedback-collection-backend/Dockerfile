@@ -1,6 +1,6 @@
 # Stage 1: Build the Spring Boot application using Maven
-# Use a Maven image with JDK 17 as the build environment
-FROM maven:3-openjdk-17 AS build
+# Use a Maven image with JDK 21 as the build environment
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -12,25 +12,20 @@ COPY pom.xml .
 COPY src ./src
 
 # Build the Spring Boot application, skipping tests to speed up the build
-# This will create a JAR file in the 'target' directory
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final lightweight image
-# Use a smaller JRE-only image for the final application, based on OpenJDK 17
-FROM openjdk:17-jre-slim
+# Use a smaller JRE-only image for the final application, based on Eclipse Temurin JDK 21
+FROM eclipse-temurin:21-jre
 
 # Set the working directory for the application inside the container
 WORKDIR /app
 
 # Copy the built JAR file from the 'build' stage into the final image
-# Replace 'feedback-backend-0.0.1-SNAPSHOT.jar' with the actual name of your generated JAR file.
-# You can find the exact name in your local 'feedback-collection-backend/target/' directory after running 'mvn clean package'.
-# It usually follows the pattern: <artifactId>-<version>.jar
 COPY --from=build /app/target/feedback-collection-backend-1.0.0.jar app.jar
 
-# Expose the port your Spring Boot application runs on (as defined in application.properties/yml)
+# Expose the port your Spring Boot application runs on
 EXPOSE 8080
 
 # Define the command to run when the container starts
-# This executes your Spring Boot JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]
