@@ -1,5 +1,5 @@
 // feedback-collection-backend/src/main/java/com/example/feedback/config/CorsConfig.java
-package com.shelfex.feedback.config; 
+package com.shelfex.feedback.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
