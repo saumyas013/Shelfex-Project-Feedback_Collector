@@ -258,7 +258,8 @@ import axios from 'axios';
 import CustomStarRating from './CustomStarRating'; // <-- NEW: Import your custom component
 import './FeedbackForm.css'; // Your existing CSS file
 
-const API_BASE_URL = 'http://localhost:8080/api/feedback';
+//const API_BASE_URL = 'http://localhost:8080/api/feedback';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL + '/api/feedback';
 
 const FeedbackForm = () => {
   const [name, setName] = useState('');

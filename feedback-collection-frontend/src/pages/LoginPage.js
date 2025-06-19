@@ -16,7 +16,7 @@ const LoginPage = ({ onLoginSuccess }) => {
 
     try {
       // Make POST request to your backend's login endpoint
-      const response = await axios.post('http://localhost:8080/auth/login', {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, {
         username,
         password,
       });

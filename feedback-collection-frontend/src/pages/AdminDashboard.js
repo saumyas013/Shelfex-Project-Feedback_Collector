@@ -411,7 +411,8 @@ ChartJS.register(
   LineElement
 );
 
-const API_BASE_URL = 'http://localhost:8080/admin'; // Base URL for admin APIs
+//const API_BASE_URL = 'http://localhost:8080/admin'; // Base URL for admin APIs
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL + '/admin'; // Base URL for admin APIs
 
 const AdminDashboard = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -478,7 +479,8 @@ const AdminDashboard = () => {
 
     // Initialize WebSocket connection only once
     if (!stompClient.current) {
-      const socket = new SockJS('http://localhost:8080/ws');
+//      const socket = new SockJS('http://localhost:8080/ws');
+       const socket = new SockJS(`${process.env.REACT_APP_API_BASE_URL}/ws`);
       stompClient.current = new Client({
         webSocketFactory: () => socket,
         debug: (str) => {
