@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController // Marks this class as a REST controller
 @RequestMapping("/api/feedback") // Base path for all endpoints in this controller
-//@CrossOrigin(origins = "http://localhost:3000") // Allows requests from your React frontend during development
+@CrossOrigin(origins = "http://localhost:3000") // Allows requests from your React frontend during development
 public class FeedbackController {
 
     @Autowired // Injects the FeedbackService instance
